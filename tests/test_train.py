@@ -34,7 +34,9 @@ def test_train_model():
         # lightweight verification
         assert trainer.checkpoint_callback.dirpath is not None
         output_dir = trainer.checkpoint_callback.dirpath
-        assert os.path.exists(output_dir), f"Output directory {output_dir} does not exist."
+        assert os.path.exists(output_dir), (
+            f"Output directory {output_dir} does not exist."
+        )
 
         ckpt_files = glob.glob(os.path.join(output_dir, "**/*.ckpt"), recursive=True)
         assert len(ckpt_files) > 0, f"No checkpoint files found in {output_dir}."
