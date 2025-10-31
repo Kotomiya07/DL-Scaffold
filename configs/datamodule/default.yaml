@@ -1,5 +1,0 @@
-
-_target_: dl_template.datamodules.mnist_datamodule.MNISTDataModule
-
-batch_size: 64
-data_dir: ${data_dir}
