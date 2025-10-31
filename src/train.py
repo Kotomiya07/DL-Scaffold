@@ -1,5 +1,5 @@
 import hydra
-from lightning import LightningDataModule, LightningModule, Trainer
+from lightning import LightningDataModule, LightningModule, Trainer, seed_everything
 from lightning.pytorch.loggers import Logger
 from omegaconf import DictConfig
 
@@ -12,6 +12,9 @@ def train(cfg: DictConfig) -> None:
     Args:
         cfg: DictConfig object containing the configuration.
     """
+    if cfg.get("seed"):
+        seed_everything(cfg.seed, workers=True)
+
     datamodule: LightningDataModule = hydra.utils.instantiate(cfg.datamodule)
     model: LightningModule = hydra.utils.instantiate(cfg.model)
     logger: Logger = hydra.utils.instantiate(cfg.logger)
