@@ -67,7 +67,7 @@ uv run ruff format .
 
 ## 📂 プロジェクト構造
 
-```
+```text
 .
 ├── .github/workflows/      # GitHub Actions のワークフロー
 ├── configs/                # Hydra の設定ファイル
