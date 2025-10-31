@@ -1,0 +1,7 @@
+
+_target_: lightning.pytorch.loggers.WandbLogger
+
+project: "dl-template"
+name: ${now:%Y-%m-%d}_${now:%H-%M-%S}
+save_dir: ${original_work_dir}/
+log_model: False # "all" or True or False
