@@ -2,14 +2,13 @@
 
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
 [![uv](https://img.shields.io/badge/uv-latest-green.svg)](https://github.com/astral-sh/uv)
+[![Lightning](https://img.shields.io/badge/Lightning-2.5+-792ee5.svg)](https://lightning.ai/)
+[![Hydra](https://img.shields.io/badge/Config-Hydra-89b8cd.svg)](https://hydra.cc/)
 [![Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
-[![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
-[![CI](https://github.com/Kotomiya07/python-template-for-rovo-dev-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/Kotomiya07/python-template-for-rovo-dev-cli/actions/workflows/ci.yml)
-[![Benchmark](https://github.com/Kotomiya07/python-template-for-rovo-dev-cli/actions/workflows/benchmark.yml/badge.svg)](https://github.com/Kotomiya07/python-template-for-rovo-dev-cli/actions/workflows/benchmark.yml)
 
-Lightningを使用した最適化された、プロダクション対応のPythonプロジェクトテンプレートです。厳格な型チェック、自動パフォーマンス測定、包括的なドキュメント、進化するメモリ管理システムを備えています。
+**Lightning + Hydra + Wandb**を活用した、プロダクション対応の深層学習プロジェクトテンプレートです。実験管理、再現性、スケーラビリティを重視した設計で、すぐに研究開発を開始できます。
 
-## 🚀 クイックスタート
+## クイックスタート
 
 ### このテンプレートを使用する
 
@@ -60,92 +59,187 @@ uv run pre-commit install --hook-type commit-msg
 uv run pytest
 ```
 
-## ✨ 主な特徴
+## 主な特徴
 
-### 🚀 agent 最適化
-- **進化するメモリシステム** - agents.mdが動的に更新される知識ベース
-- **体系的な更新プロトコル** - 頻度・変更・品質指標ベースの自動更新
-- **分散ドキュメント管理** - プロジェクトタイプ別の専門ガイド
-- **GitHub統合** - `make pr`、`make issue`コマンドでシームレスな操作
+### 実験管理
+- **Experiment中心の設計** - すべての設定を1ファイルで管理
+- **Hydra設定システム** - 階層的で柔軟な設定管理
+- **再現性の保証** - シード固定、決定論的実行、設定の自動保存
 
-### 🛠️ 開発ツールチェーン
+### Lightning統合
+- **PyTorch Lightning 2.5+** - モダンな深層学習フレームワーク
+- **自動最適化** - 分散学習、混合精度、勾配累積
+- **豊富なコールバック** - EarlyStopping, ModelCheckpoint, RichProgressBar
+- **柔軟なロガー** - Wandb, TensorBoard対応
+
+### 設定管理
+- **Model Variants** - モデル設定のバリエーション管理
+- **Data Variants** - データセット設定のバリエーション管理
+- **Experiment Configs** - 完全な実験設定の定義
+- **簡単なオーバーライド** - コマンドラインから自由に調整
+
+### 開発ツール
 - **[uv](https://github.com/astral-sh/uv)** - 高速なPythonパッケージマネージャー
-- **[Ruff](https://github.com/astral-sh/ruff)** - 超高速Pythonリンター・フォーマッター
-- **[mypy](https://mypy-lang.org/)** - strictモード＋PEP 695型構文対応
-- **[pytest](https://pytest.org/)** - カバレッジ付きテストフレームワーク
-- **[hypothesis](https://hypothesis.readthedocs.io/)** - プロパティベーステストフレームワーク
-- **[pytest-benchmark](https://pytest-benchmark.readthedocs.io/)** - 自動パフォーマンステスト
-- **[bandit](https://github.com/PyCQA/bandit)** - セキュリティスキャン
-- **[pip-audit](https://github.com/pypa/pip-audit)** - 依存関係の脆弱性チェック
-- **[pre-commit](https://pre-commit.com/)** - コード品質用Gitフック
+- **[Ruff](https://github.com/astral-sh/ruff)** - 超高速リンター・フォーマッター
+- **[mypy](https://mypy-lang.org/)** - 厳格な型チェック
+- **[pytest](https://pytest.org/)** - テストフレームワーク
+-  GitHub CLIによるワンコマンドPR・Issue作成
+-  キャッシュ最適化された実行環境
 
-### 🔍 コード品質・型安全性
-- ✅ PEP 695新型構文（`type` statement）対応
-- ✅ TypedDict・Literal・Protocol活用の堅牢な型システム
-- ✅ JSON操作用の型安全なユーティリティ
-- ✅ プロパティベーステストによるエッジケース検証
-- ✅ 包括的なヘルパー関数テストスイート
-- ✅ 自動セキュリティ・脆弱性チェック
+### 包括的ドキュメント
+-  **動的agents.md** - プロジェクトと共に進化する知識ベース
+-  **専門ガイド** - ML/バックエンドプロジェクト対応
+-  **協働戦略ガイド** - 人間とRovo Dev CLIの効果的な連携方法
+-  **メモリ更新プロトコル** - ドキュメント品質管理フレームワーク
 
-### ⚡ パフォーマンス・プロファイリング
-- ✅ `@profile`、`@timeit`デコレータによる性能測定
-- ✅ 自動ベンチマークCI（PR時の性能比較レポート）
-- ✅ コンテキストマネージャー型プロファイラー
-- ✅ 性能回帰検出システム
-- ✅ メモリ・実行時間の詳細監視
-
-### 🔄 CI/CD・自動化
-- ✅ 並列実行対応の高速CIパイプライン
-- ✅ 自動パフォーマンスベンチマーク（PR時レポート生成）
-- ✅ Dependabotによる自動依存関係更新
-- ✅ GitHub CLIによるワンコマンドPR・Issue作成
-- ✅ キャッシュ最適化された実行環境
-
-### 📚 包括的ドキュメント
-- ✅ **動的agents.md** - プロジェクトと共に進化する知識ベース
-- ✅ **専門ガイド** - ML/バックエンドプロジェクト対応
-- ✅ **協働戦略ガイド** - 人間とRovo Dev CLIの効果的な連携方法
-- ✅ **メモリ更新プロトコル** - ドキュメント品質管理フレームワーク
-
-## 📁 プロジェクト構造
+## プロジェクト構造
 
 ```
-project-root/
-├── .github/                     # GitHub Actionsの設定ファイル
-│   ├── workflows/               # CI/CD + ベンチマークワークフロー
-│   │   ├── ci.yml              # メインCI（テスト・リント・型チェック）
-│   │   └── benchmark.yml       # パフォーマンスベンチマーク
-│   ├── dependabot.yml           # Dependabotの設定
-│   ├── ISSUE_TEMPLATE/          # Issueテンプレート
-│   └── PULL_REQUEST_TEMPLATE.md # Pull Requestテンプレート
-├── project_name/                # メインパッケージ（uv syncでインストール可能）
-│   ├── __init__.py
-│   ├── py.typed                 # PEP 561準拠の型情報マーカー
-│   ├── types.py                 # プロジェクト共通型定義
-│   ├── core/                    # コアロジック
-│   │   └── example.py           # 型ヒント強化済みサンプル
+DL-Scaffold/
+├── .project-root                # プロジェクトルートマーカー
+├── configs/                      # Hydra設定ファイル
+│   ├── train.yaml               # メイントレーニング設定
+│   ├── eval.yaml                # 評価設定
+│   ├── experiment/              # 🔬 実験設定（推奨）
+│   │   ├── mnist_baseline.yaml  # MNISTベースライン
+│   │   ├── mnist_large.yaml     # 大規模モデル実験
+│   │   └── mnist_dev.yaml       # 開発・デバッグ用
+│   ├── model_variant/           # モデル設定バリアント
+│   │   ├── mnist_simple.yaml    # 128 hidden units
+│   │   └── mnist_large.yaml     # 256 hidden units
+│   ├── data_variant/            # データ設定バリアント
+│   │   ├── mnist_standard.yaml
+│   │   └── mnist_large_batch.yaml
+│   ├── callbacks/               # コールバック設定
+│   │   ├── default.yaml
+│   │   ├── early_stopping.yaml
+│   │   └── model_checkpoint.yaml
+│   ├── trainer/                 # Trainer設定
+│   │   ├── default.yaml (CPU)
+│   │   ├── gpu.yaml
+│   │   ├── ddp.yaml (分散学習)
+│   │   └── mps.yaml (Apple Silicon)
+│   └── logger/                  # ロガー設定
+│       └── wandb.yaml
+├── project_name/                # メインパッケージ
+│   ├── data/                    # DataModules
+│   │   └── mnist_datamodule.py
+│   ├── models/                  # LightningModules
+│   │   └── mnist_module.py
 │   └── utils/                   # ユーティリティ
-│       ├── helpers.py           # JSON・リスト・辞書操作
-│       └── profiling.py         # パフォーマンス測定ツール
-├── tests/                       # テストコード
-│   ├── unit/                    # 単体テスト
-│   │   ├── test_example.py     # 既存テスト
-│   │   └── test_helpers.py     # 全ヘルパー関数テスト
-│   ├── property/                # プロパティベーステスト
-│   │   └── test_helpers_property.py # Hypothesis使用
-│   ├── integration/             # 統合テスト
-│   └── conftest.py              # pytest設定
+│       └── logging_utils.py
+├── scripts/                     # トレーニング・評価スクリプト
+│   ├── train.py
+│   └── eval.py
+├── tests/                       # テスト
 ├── docs/                        # ドキュメント
-├── scripts/                     # セットアップスクリプト
-├── pyproject.toml               # 依存関係・ツール設定
-├── .pre-commit-config.yaml      # pre-commit設定
-├── README.md                    # プロジェクト説明
-└── agents.md                    # Rovo Dev CLI用ガイド
+└── data/                        # データディレクトリ（自動作成）
 ```
 
-## 🛠️ 開発
+## 実験の実行
 
-### 📋 テストの実行
+### 基本的な使い方
+
+```bash
+# 事前定義された実験を実行（推奨）
+uv run python scripts/train.py experiment=mnist_baseline
+
+# 開発モード（少ないデータで高速テスト）
+uv run python scripts/train.py experiment=mnist_dev
+
+# パラメータをオーバーライド
+uv run python scripts/train.py experiment=mnist_baseline trainer.max_epochs=20
+
+# 複数のパラメータを変更
+uv run python scripts/train.py experiment=mnist_baseline \
+  trainer.max_epochs=50 \
+  model.lr=0.0001 \
+  data.batch_size=256
+```
+
+### GPU/MPS使用
+
+```bash
+# GPU使用
+uv run python scripts/train.py experiment=mnist_baseline trainer=gpu
+
+# Apple Silicon (MPS)使用
+uv run python scripts/train.py experiment=mnist_baseline trainer=mps
+
+# 分散学習（複数GPU）
+uv run python scripts/train.py experiment=mnist_baseline trainer=ddp trainer.devices=4
+```
+
+### Wandbロギング
+
+```bash
+# Wandbを有効化
+uv run python scripts/train.py experiment=mnist_baseline logger=wandb
+
+# Wandbのプロジェクト名を指定
+uv run python scripts/train.py experiment=mnist_baseline logger=wandb \
+  logger.wandb.project=my-project \
+  logger.wandb.name=experiment-001
+```
+
+### モデル評価
+
+```bash
+# 保存されたチェックポイントで評価
+uv run python scripts/eval.py \
+  experiment=mnist_baseline \
+  ckpt_path=/path/to/checkpoint.ckpt
+```
+
+## 新しい実験の作成
+
+### ステップ1: Model Variantを定義
+
+`configs/model_variant/my_model.yaml`:
+```yaml
+_target_: project_name.models.mnist_module.MNISTLightningModule
+
+input_size: 28
+hidden_dim: 512  # カスタマイズ
+num_classes: 10
+lr: 0.0005
+weight_decay: 1e-4
+```
+
+### ステップ2: Experiment設定を作成
+
+`configs/experiment/my_experiment.yaml`:
+```yaml
+# @package _global_
+
+defaults:
+  - /model_variant@model: my_model
+  - /data_variant@data: mnist_standard
+  - override /data: mnist
+  - override /callbacks: default
+  - override /trainer: gpu
+  - override /logger: wandb
+
+tags: ["custom", "experiment"]
+
+seed: 42
+train: true
+test: true
+
+trainer:
+  max_epochs: 100
+  precision: "16-mixed"  # 混合精度
+```
+
+### ステップ3: 実行
+
+```bash
+uv run python scripts/train.py experiment=my_experiment
+```
+
+## 開発
+
+### テストの実行
 
 ```bash
 # すべてのテストを実行（単体・プロパティ・統合）
@@ -182,7 +276,7 @@ make check
 make check-all
 ```
 
-### ⚡ パフォーマンス測定・プロファイリング
+### パフォーマンス測定・プロファイリング
 
 ```bash
 # ローカルベンチマーク実行
@@ -190,36 +284,9 @@ make benchmark
 
 # プロファイリング実行（cProf使用）
 make profile
-
-# カスタムプロファイリング
-uv run python -c "
-from project_name.utils.profiling import profile, timeit, Timer
-
-# デコレータでの測定
-@profile
-def heavy_function():
-    return sum(i**2 for i in range(10000))
-
-@timeit
-def quick_function():
-    return [i for i in range(1000)]
-
-# コンテキストマネージャーでの測定
-with Timer('Custom operation') as timer:
-    result = heavy_function()
-print(f'Took {timer.elapsed:.4f} seconds')
-"
-
-# 詳細プロファイリング（上位10関数表示）
-uv run python -c "
-from project_name.utils.profiling import profile_context
-with profile_context(sort_by='cumulative', limit=10) as prof:
-    # 重い処理をここに記述
-    pass
-"
 ```
 
-### 🔗 GitHub統合
+### GitHub統合
 
 ```bash
 # プルリクエスト作成
@@ -235,7 +302,7 @@ gh pr create --title "タイトル" --body "本文" --label "ラベル"
 gh issue create --title "タイトル" --body "本文" --label "ラベル"
 ```
 
-### 🛠️ その他のコマンド
+### その他のコマンド
 
 ```bash
 # 利用可能なコマンドを表示
@@ -251,7 +318,7 @@ make security
 make audit
 ```
 
-### 📦 依存関係の管理
+### 依存関係の管理
 
 ```bash
 # ランタイム依存関係を追加
@@ -270,98 +337,37 @@ uv sync --all-extras
 uv lock --upgrade
 ```
 
-## 🤖 Rovo Dev CLI との次世代協働システム
+## 新規プロジェクト設定チェックリスト
 
-このテンプレートはRovo Dev CLIとの協働を革新的にサポートします：
-
-### 🧠 進化するメモリシステム
-- **体系的更新プロトコル**: 頻度・変更等による自動更新判定
-- **分散メモリ管理**: メイン（agents.md）とサブ（専門ガイド）の最適分散
-
-### 🔄 自己改善サイクル
-Rovo Dev CLI使用時の自動学習・改善プロセス：
-
-1. **パターン検出**: 同じ質問2回で自動FAQ追加
-2. **品質監視**: 再質問率25%超過で改善トリガー
-3. **情報統合**: 新しい知識の体系的な蓄積
-4. **効果測定**: 協働効率の継続的向上
-
-### 🎯 Rovo Dev CLI最適化機能
-
-**即座に利用可能**:
-- プロジェクトコンテキストの自動把握
-- 型安全な開発環境（PEP 695対応）
-- ワンコマンドGitHub操作（`make pr`、`make issue`）
-- 自動品質チェック・パフォーマンス測定
-
-**段階的に進化**:
-- プロジェクト固有パターンの学習
-- チーム開発慣習の蓄積
-- トラブルシューティング知識の拡充
-- 最適化されたワークフローの確立
-
-### 📋 協働効率指標
-- 再質問回数：30%減少目標
-- 新規参加者オンボーディング：50%短縮目標
-- コードレビュー指摘事項：40%減少目標
-- 問題解決時間：大幅短縮
-
-## 📚 ドキュメント階層
-
-### 🎯 メインドキュメント
-- **[agents.md](agents.md)** - 動的進化する包括的プロジェクトガイド
-  - プロジェクト概要・コーディング規約
-  - よく使うコマンド・GitHub操作
-  - 型ヒント・テスト戦略・セキュリティ
-
-### 🤝 協働・戦略ガイド
-- **[rovodev-collaboration-guide.md](docs/rovodev-collaboration-guide.md)** - Rovo Dev CLI協働の全て
-  - メモリ更新プロトコル・品質管理フレームワーク
-  - 段階的カスタマイズ・動的ルール追加
-  - 効果的なフィードバックループ・継続的改善
-
-### 🎨 プロジェクトタイプ別ガイド
-- **[ml-project-guide.md](docs/ml-project-guide.md)** - 機械学習プロジェクト
-  - PyTorch・Hydra・wandb統合設定
-  - 実験管理・データバージョニング
-  - GPU最適化・モデル管理
-
-- **[backend-project-guide.md](docs/backend-project-guide.md)** - FastAPIバックエンド
-  - 非同期データベース操作・JWT認証
-  - API設計・セキュリティ設定
-  - Docker開発環境・プロダクション考慮事項
-
-## ✅ 新規プロジェクト設定チェックリスト
-
-### 🔧 基本プロジェクト設定
+### 基本プロジェクト設定
 - [ ] **プロジェクト名更新**: `make setup`実行またはスクリプトで一括変更
 - [ ] **作者情報更新**: `pyproject.toml`の`authors`セクション
 - [ ] **ライセンス選択**: LICENSEファイルを適切なライセンスに更新
 - [ ] **README.md更新**: プロジェクト固有の説明・機能・使用方法
 - [ ] **agents.md カスタマイズ**: プロジェクト概要をテンプレートから更新
 
-### ⚙️ 開発環境・品質設定
+### 開発環境・品質設定
 - [ ] **依存関係調整**: プロジェクトに必要な追加パッケージの導入
 - [ ] **型チェック厳格さ**: 必要に応じて段階的に`mypy`設定を調整
 - [ ] **リントルール**: プロジェクトに合わせた`ruff`設定のカスタマイズ
 - [ ] **テストカバレッジ**: `pytest`カバレッジ要件の調整
 - [ ] **プロファイリング**: パフォーマンス要件に応じたベンチマーク設定
 
-### 🔐 GitHubリポジトリ・セキュリティ設定
+### GitHubリポジトリ・セキュリティ設定
 - [ ] **ブランチ保護**: `main`ブランチの保護ルール有効化
 - [ ] **PR必須レビュー**: Pull Request作成時のレビュー要求設定
 - [ ] **ステータスチェック**: CI・型チェック・テストの必須化
 - [ ] **Dependabot**: 自動依存関係更新の有効化
 - [ ] **Issues/Projects**: 必要に応じてプロジェクト管理機能の有効化
-- [ ] **Secrets管理**: 必要なAPI키や認証情報の安全な設定
+- [ ] **Secrets管理**: 必要なAPIキーや認証情報の安全な設定
 
-### 📚 ドキュメント・協働設定
+### ドキュメント・協働設定
 - [ ] **agents.md詳細化**: プロジェクト固有の開発ルール・制約の追加
 - [ ] **専門ガイド選択**: ML/バックエンドなど該当するガイドのインポート
 - [ ] **チーム規約**: `docs/team-rules.md`などチーム固有ルールの追加
 - [ ] **協働メトリクス**: 効率指標の初期値設定・測定開始
 
-## 🔧 カスタマイズ
+## カスタマイズ
 
 ### 型チェックの厳格さ調整
 
@@ -400,42 +406,22 @@ addopts = [
 ]
 ```
 
-## 🔗 外部リソース・参考資料
+## 外部リソース・参考資料
 
-### 🛠️ 開発ツール公式ドキュメント
+### 開発ツール公式ドキュメント
 - **[uv ドキュメント](https://docs.astral.sh/uv/)** - Pythonパッケージ管理
 - **[Ruff ドキュメント](https://docs.astral.sh/ruff/)** - リント・フォーマッター
 - **[mypy ドキュメント](https://mypy.readthedocs.io/)** - 型チェッカー
 - **[pytest ドキュメント](https://docs.pytest.org/en/stable/)** - テストフレームワーク
 - **[Hypothesis ドキュメント](https://hypothesis.readthedocs.io/)** - プロパティベーステスト
 
-<!--
-### 🤖 Rovo Dev CLI関連
-- **[Rovo Dev CLI 公式サイト]()** - 基本情報・インストール
-- **[Rovo Dev CLI ドキュメント]()** - 使用方法・ベストプラクティス
--->
-
-### 🐍 Python・型ヒント
+### Python・型ヒント
 - **[PEP 695 - Type Parameter Syntax](https://peps.python.org/pep-0695/)** - 新型構文仕様
 - **[TypedDict Guide](https://docs.python.org/3/library/typing.html#typing.TypedDict)** - 型安全な辞書
 - **[Python 3.12 リリースノート](https://docs.python.org/3/whatsnew/3.12.html)** - 新機能一覧
 
 ---
 
-## 📄 ライセンス
+## ライセンス
 
-このテンプレートはMITライセンスの下でリリースされています。詳細は[LICENSE](LICENSE)をご覧ください。
-
-あなたのプロジェクトは任意のライセンスを使用できます - LICENSEファイルを更新するだけです。
-
----
-
-## 🚀 始めましょう
-
-Rovo Dev CLIとの協働による、次世代Python開発を体験してください：
-
-1. **このテンプレートを使用** → 「Use this template」ボタンをクリック
-2. **セットアップ実行** → `make setup`で全自動環境構築
-3. **開発開始** → 型安全・高性能・自動品質管理の開発環境を即座に利用
-
-**Happy Coding with Rovo Dev CLI! 🤖✨**
+このプロジェクトはApache-2.0ライセンスの下でライセンスされています。

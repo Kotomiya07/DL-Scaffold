@@ -45,3 +45,6 @@ coverage.xml
 
 # Project specific
 .secrets.baseline
+logs/
+data/
+wandb/

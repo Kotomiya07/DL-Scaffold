@@ -37,6 +37,8 @@ def get_files_to_update() -> list[Path]:
         ".github/ISSUE_TEMPLATE/feature_request.yml",
         ".github/workflows/ci.yml",
         ".github/workflows/benchmark.yml",
+        "configs/logger/wandb.yaml",
+        "configs/data/mnist.yaml",
     ]
 
     # Add optional files if they exist

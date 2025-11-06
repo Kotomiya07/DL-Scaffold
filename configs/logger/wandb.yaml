@@ -1,7 +1,8 @@
+# https://wandb.ai
+wandb:
+  _target_: lightning.pytorch.loggers.WandbLogger
 
-_target_: lightning.pytorch.loggers.WandbLogger
-
-project: "dl-template"
-name: ${now:%Y-%m-%d}_${now:%H-%M-%S}
-save_dir: ${original_work_dir}/
-log_model: False # "all" or True or False
+  project: "project_name"
+  name: ${now:%Y-%m-%d}_${now:%H-%M-%S}
+  save_dir: "${paths.output_dir}"
+  log_model: False # "all" or True or False
